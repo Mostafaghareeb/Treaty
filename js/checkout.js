@@ -22,14 +22,21 @@ class Checkout {
     checkoutItems.innerHTML = this.items
       .map(
         (item) => `
-            <div class="flex justify-between items-center">
-                <div>
-                    <h3 class="font-semibold">${item.name}</h3>
-                    <p class="text-gray-600">Quantity: ${item.quantity}</p>
+            <div class="flex items-center justify-between py-2">
+                <div class="flex items-center space-x-4">
+                    <img src="${item.image}" alt="${
+          item.name
+        }" class="w-12 h-12 object-cover rounded-lg">
+                    <div>
+                        <h3 class="font-semibold">${item.name}</h3>
+                        <p class="text-gray-600">$${item.price.toFixed(2)} x ${
+          item.quantity
+        }</p>
+                    </div>
                 </div>
-                <p class="font-semibold">$${(
+                <span class="font-semibold">$${(
                   item.price * item.quantity
-                ).toFixed(2)}</p>
+                ).toFixed(2)}</span>
             </div>
         `
       )

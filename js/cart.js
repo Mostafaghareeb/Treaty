@@ -29,6 +29,7 @@ class ShoppingCart {
     const product = {
       name: button.dataset.product,
       price: parseFloat(button.dataset.price),
+      image: button.dataset.image,
       quantity: 1,
     };
 
@@ -104,6 +105,9 @@ class ShoppingCart {
               item.name
             }">
                 <div class="flex items-center space-x-4">
+                    <img src="${item.image}" alt="${
+          item.name
+        }" class="w-16 h-16 object-cover rounded-lg">
                     <div>
                         <h3 class="font-semibold">${item.name}</h3>
                         <p class="text-gray-600">$${item.price.toFixed(2)}</p>

@@ -77,6 +77,24 @@
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-pink-600 focus:outline-none">
+                        <div class="w-6 h-6 relative">
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out"
+                                id="burger-top"></span>
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out mt-2"
+                                id="burger-middle"></span>
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out mt-4"
+                                id="burger-bottom"></span>
+                        </div>
+                    </button>
+                </div>
+
                 <div class="flex-shrink-0">
                     <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
                 </div>
@@ -100,6 +118,20 @@
                             class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Home</a>
+                <a href="shop.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Shop</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">About</a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Contact</a>
             </div>
         </div>
     </nav>
@@ -141,7 +173,8 @@
                         <p class="text-gray-600">$3.99</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
-                            data-product="Classic Glazed" data-price="3.99">Add to Cart</button>
+                            data-product="Classic Glazed" data-price="3.99"
+                            data-image="https://images.unsplash.com/photo-1556913396-7a3c459ef68e">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Product Card 2 -->
@@ -153,7 +186,9 @@
                         <p class="text-gray-600">$4.49</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
-                            data-product="Chocolate Dream" data-price="4.49">Add to Cart</button>
+                            data-product="Chocolate Dream" data-price="4.49"
+                            data-image="https://images.unsplash.com/photo-1527904324834-3bda86da6771">Add to
+                            Cart</button>
                     </div>
                 </div>
 
@@ -166,7 +201,9 @@
                         <p class="text-gray-600">$4.99</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
-                            data-product="Berry Blast" data-price="4.99">Add to Cart</button>
+                            data-product="Berry Blast" data-price="4.99"
+                            data-image="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94">Add to
+                            Cart</button>
                     </div>
                 </div>
 
@@ -179,7 +216,9 @@
                         <p class="text-gray-600">$4.99</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
-                            data-product="Caramel Crunch" data-price="4.99">Add to Cart</button>
+                            data-product="Caramel Crunch" data-price="4.99"
+                            data-image="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd">Add to
+                            Cart</button>
                     </div>
                 </div>
             </div>
@@ -365,7 +404,10 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025, Treaty <a href="https://www.facebook.com/share/1BNWyPJNgL/" class="hover:text-pink-400">Developed by Mostafa</a></p>
+
+                <p>&copy; 2025, Treaty <a href="https://www.facebook.com/share/1BNWyPJNgL/"
+                        class="hover:text-pink-400">Developed by Mostafa</a></p>
+
             </div>
         </div>
     </footer>
