@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Treaty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'pacifico': ['Pacifico', 'cursive'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-pink-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8 font-poppins">
+                    <a href="index.html#home" class="text-gray-600 hover:text-pink-600">Home</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-pink-600">Shop</a>
+                    <a href="index.html#about" class="text-gray-600 hover:text-pink-600">About</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-pink-600">Contact</a>
+                </div>
+
+                <!-- Cart -->
+                <div class="flex items-center">
+                    <a href="cart.html" class="text-gray-600 hover:text-pink-600 relative" id="cartButton">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cartCount"
+                            class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 class="text-3xl font-bold mb-8">Shopping Cart</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div id="cartItems" class="space-y-4">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+
+                <!-- Empty Cart Message -->
+                <div id="emptyCartMessage" class="hidden text-center py-8">
+                    <p class="text-gray-500 text-lg">Your cart is empty</p>
+                    <a href="index.html"
+                        class="inline-block mt-4 bg-pink-600 text-white px-6 py-2 rounded-full hover:bg-pink-700 transition duration-300">Continue
+                        Shopping</a>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="bg-white rounded-lg shadow-md p-6 h-fit">
+                <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Tax (8%)</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="border-t pt-2 mt-2">
+                        <div class="flex justify-between font-semibold">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="checkoutButton" onclick="window.location.href='checkout.html'"
+                    class="w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cart.js"></script>
+</body>
+
+</html>
