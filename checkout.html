@@ -29,9 +29,27 @@
 
 <body class="bg-pink-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg w-full">
+    <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-pink-600 focus:outline-none">
+                        <div class="w-6 h-6 relative">
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out"
+                                id="burger-top"></span>
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out mt-2"
+                                id="burger-middle"></span>
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out mt-4"
+                                id="burger-bottom"></span>
+                        </div>
+                    </button>
+                </div>
+
                 <div class="flex-shrink-0">
                     <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
                 </div>
@@ -57,10 +75,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#home"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Home</a>
+                <a href="shop.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Shop</a>
+                <a href="index.html#about"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">About</a>
+                <a href="index.html#contact"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Contact</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Checkout Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
         <h1 class="text-3xl font-bold mb-8">Checkout</h1>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -144,6 +176,7 @@
         </div>
     </div>
 
+    <script src="js/main.js"></script>
     <script src="js/checkout.js"></script>
 </body>
 
