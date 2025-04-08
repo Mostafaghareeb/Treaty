@@ -165,60 +165,71 @@
             <h2 class="text-3xl font-bold text-gray-900 mb-8 font-serif text-center">Trending Items</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Product Card 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                    data-product='{"name":"Classic Glazed","price":3.99,"image":"https://images.unsplash.com/photo-1556913396-7a3c459ef68e","ingredients":["Flour","Sugar","Yeast","Butter","Vanilla Extract","Milk"]}'>
                     <img src="https://images.unsplash.com/photo-1556913396-7a3c459ef68e" alt="Classic Glazed"
                         class="w-full h-64 object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">Classic Glazed</h3>
-                        <p class="text-gray-600">$3.99</p>
+                        <h3 class="text-lg font-semibold text-gray-900 group-hover:underline group-hover:text-black">
+                            Classic Glazed</h3>
+                        <p class="text-gray-600 group-hover:underline">LE 3.99 EGP</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
                             data-product="Classic Glazed" data-price="3.99"
-                            data-image="https://images.unsplash.com/photo-1556913396-7a3c459ef68e">Add to Cart</button>
+                            data-image="https://images.unsplash.com/photo-1556913396-7a3c459ef68e">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
+
                 <!-- Product Card 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                    data-product='{"name":"Chocolate Dream","price":4.49,"image":"https://images.unsplash.com/photo-1527904324834-3bda86da6771","ingredients":["Flour","Sugar","Yeast","Butter","Cocoa Powder","Chocolate Chips","Milk"]}'>
                     <img src="https://images.unsplash.com/photo-1527904324834-3bda86da6771" alt="Chocolate Dream"
                         class="w-full h-64 object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">Chocolate Dream</h3>
-                        <p class="text-gray-600">$4.49</p>
+                        <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Chocolate Dream</h3>
+                        <p class="text-gray-600 group-hover:underline">LE 4.49 EGP</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
                             data-product="Chocolate Dream" data-price="4.49"
-                            data-image="https://images.unsplash.com/photo-1527904324834-3bda86da6771">Add to
-                            Cart</button>
+                            data-image="https://images.unsplash.com/photo-1527904324834-3bda86da6771">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product Card 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group" 
+                    data-product='{"name":"Berry Blast","price":4.99,"image":"https://images.unsplash.com/photo-1495147466023-ac5c588e2e94","ingredients":["Flour","Sugar","Yeast","Butter","Mixed Berries","Lemon Zest","Milk"]}'>
                     <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94" alt="Berry Blast"
                         class="w-full h-64 object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">Berry Blast</h3>
-                        <p class="text-gray-600">$4.99</p>
+                        <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Berry Blast</h3>
+                        <p class="text-gray-600 group-hover:underline">LE 4.99 EGP</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
                             data-product="Berry Blast" data-price="4.99"
-                            data-image="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94">Add to
-                            Cart</button>
+                            data-image="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product Card 4 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                    data-product='{"name":"Caramel Crunch","price":4.99,"image":"https://images.unsplash.com/photo-1576618148400-f54bed99fcfd","ingredients":["Flour","Sugar","Yeast","Butter","Caramel Sauce","Toasted Nuts","Milk"]}'>
                     <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd" alt="Caramel Crunch"
                         class="w-full h-64 object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-900">Caramel Crunch</h3>
-                        <p class="text-gray-600">$4.99</p>
+                        <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Caramel Crunch</h3>
+                        <p class="text-gray-600 group-hover:underline">LE 4.99 EGP</p>
                         <button
                             class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
                             data-product="Caramel Crunch" data-price="4.99"
-                            data-image="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd">Add to
-                            Cart</button>
+                            data-image="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
@@ -412,8 +423,36 @@
         </div>
     </footer>
 
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4">
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/2">
+                    <img id="modalProductImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 id="modalProductName" class="text-2xl font-bold mb-2"></h2>
+                    <p id="modalProductPrice" class="text-xl text-pink-600 mb-4"></p>
+                    <h3 class="font-semibold mb-2">Ingredients:</h3>
+                    <ul id="modalProductIngredients" class="list-disc list-inside mb-6"></ul>
+                    <div class="flex space-x-4">
+                        <button id="addToCartBtn"
+                            class="flex-1 bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300">
+                            Add to Cart
+                        </button>
+                        <button id="buyNowBtn"
+                            class="flex-1 bg-gray-800 text-white py-2 rounded-full hover:bg-gray-900 transition duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/shop.js"></script>
     <script src="js/cart.js"></script>
 
 </body>

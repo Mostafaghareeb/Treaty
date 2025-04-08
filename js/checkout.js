@@ -29,12 +29,12 @@ class Checkout {
         }" class="w-12 h-12 object-cover rounded-lg">
                     <div>
                         <h3 class="font-semibold">${item.name}</h3>
-                        <p class="text-gray-600">$${item.price.toFixed(2)} x ${
+                        <p class="text-gray-600">LE ${item.price.toFixed(2)} x ${
           item.quantity
         }</p>
                     </div>
                 </div>
-                <span class="font-semibold">$${(
+                <span class="font-semibold">LE ${(
                   item.price * item.quantity
                 ).toFixed(2)}</span>
             </div>
@@ -52,9 +52,9 @@ class Checkout {
 
     document.getElementById(
       "checkout-subtotal"
-    ).textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById("checkout-tax").textContent = `$${tax.toFixed(2)}`;
-    document.getElementById("checkout-total").textContent = `$${total.toFixed(
+    ).textContent = `LE ${subtotal.toFixed(2)}`;
+    document.getElementById("checkout-tax").textContent = `LE ${tax.toFixed(2)}`;
+    document.getElementById("checkout-total").textContent = `LE ${total.toFixed(
       2
     )}`;
   }

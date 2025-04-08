@@ -1,1 +1,218 @@
-<h1>shop Page is Not exist Now</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Treaty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'pacifico': ['Pacifico', 'cursive'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-pink-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-pink-600 focus:outline-none">
+                        <div class="w-6 h-6 relative">
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out"
+                                id="burger-top"></span>
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out mt-2"
+                                id="burger-middle"></span>
+                            <span
+                                class="block absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out mt-4"
+                                id="burger-bottom"></span>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8 font-poppins">
+                    <a href="#home" class="text-gray-600 hover:text-pink-600">Home</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-pink-600">Shop</a>
+                    <a href="#about" class="text-gray-600 hover:text-pink-600">About</a>
+                    <a href="#contact" class="text-gray-600 hover:text-pink-600">Contact</a>
+                </div>
+
+                <!-- Cart -->
+                <div class="flex items-center">
+                    <a href="cart.html" class="text-gray-600 hover:text-pink-600 relative" id="cartButton">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cartCount"
+                            class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#home"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Home</a>
+                <a href="shop.html"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Shop</a>
+                <a href="index.html#about"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">About</a>
+                <a href="index.html#contact"
+                    class="block px-3 py-2 text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+        <h1 class="text-3xl font-bold mb-8">Our Products</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                data-product='{"name":"Classic Glazed","price":3.99,"image":"https://images.unsplash.com/photo-1556913396-7a3c459ef68e","ingredients":["Flour","Sugar","Yeast","Butter","Vanilla Extract","Milk"]}'>
+                <img src="https://images.unsplash.com/photo-1556913396-7a3c459ef68e" alt="Classic Glazed"
+                    class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Classic Glazed</h3>
+                    <p class="text-gray-600 group-hover:underline">LE 3.99 EGP</p>
+                    <button
+                        class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
+                        data-product="Classic Glazed" data-price="3.99"
+                        data-image="https://images.unsplash.com/photo-1556913396-7a3c459ef68e">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                data-product='{"name":"Chocolate Dream","price":4.49,"image":"https://images.unsplash.com/photo-1527904324834-3bda86da6771","ingredients":["Flour","Sugar","Yeast","Butter","Cocoa Powder","Chocolate Chips","Milk"]}'>
+                <img src="https://images.unsplash.com/photo-1527904324834-3bda86da6771" alt="Chocolate Dream"
+                    class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Chocolate Dream</h3>
+                    <p class="text-gray-600 group-hover:underline">LE 4.49 EGP</p>
+                    <button
+                        class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
+                        data-product="Chocolate Dream" data-price="4.49"
+                        data-image="https://images.unsplash.com/photo-1527904324834-3bda86da6771">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                data-product='{"name":"Berry Blast","price":4.99,"image":"https://images.unsplash.com/photo-1495147466023-ac5c588e2e94","ingredients":["Flour","Sugar","Yeast","Butter","Mixed Berries","Lemon Zest","Milk"]}'>
+                <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94" alt="Berry Blast"
+                    class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Berry Blast</h3>
+                    <p class="text-gray-600 group-hover:underline">LE 4.99 EGP</p>
+                    <button
+                        class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
+                        data-product="Berry Blast" data-price="4.99"
+                        data-image="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                data-product='{"name":"Caramel Crunch","price":4.99,"image":"https://images.unsplash.com/photo-1576618148400-f54bed99fcfd","ingredients":["Flour","Sugar","Yeast","Butter","Caramel Sauce","Toasted Nuts","Milk"]}'>
+                <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd" alt="Caramel Crunch"
+                    class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Caramel Crunch</h3>
+                    <p class="text-gray-600 group-hover:underline">LE 4.99 EGP</p>
+                    <button
+                        class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
+                        data-product="Caramel Crunch" data-price="4.99"
+                        data-image="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 5 (New) -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
+                data-product='{"name":"Maple Bacon","price":5.49,"image":"https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6","ingredients":["Flour","Sugar","Yeast","Butter","Maple Syrup","Bacon Bits","Milk"]}'>
+                <img src="https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6" alt="Maple Bacon"
+                    class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:underline">Maple Bacon</h3>
+                    <p class="text-gray-600 group-hover:underline">LE 5.49 EGP</p>
+                    <button
+                        class="add-to-cart mt-4 w-full bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300"
+                        data-product="Maple Bacon" data-price="5.49"
+                        data-image="https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4">
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/2">
+                    <img id="modalProductImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 id="modalProductName" class="text-2xl font-bold mb-2"></h2>
+                    <p id="modalProductPrice" class="text-xl text-pink-600 mb-4"></p>
+                    <h3 class="font-semibold mb-2">Ingredients:</h3>
+                    <ul id="modalProductIngredients" class="list-disc list-inside mb-6"></ul>
+                    <div class="flex space-x-4">
+                        <button id="addToCartBtn"
+                            class="flex-1 bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300">
+                            Add to Cart
+                        </button>
+                        <button id="buyNowBtn"
+                            class="flex-1 bg-gray-800 text-white py-2 rounded-full hover:bg-gray-900 transition duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

@@ -110,7 +110,7 @@ class ShoppingCart {
         }" class="w-16 h-16 object-cover rounded-lg">
                     <div>
                         <h3 class="font-semibold">${item.name}</h3>
-                        <p class="text-gray-600">$${item.price.toFixed(2)}</p>
+                        <p class="text-gray-600">LE ${item.price.toFixed(2)}</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -193,9 +193,9 @@ class ShoppingCart {
     const tax = subtotal * 0.08;
     const total = subtotal + tax;
 
-    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-    taxElement.textContent = `$${tax.toFixed(2)}`;
-    totalElement.textContent = `$${total.toFixed(2)}`;
+    subtotalElement.textContent = `LE ${subtotal.toFixed(2)}`;
+    taxElement.textContent = `LE ${tax.toFixed(2)}`;
+    totalElement.textContent = `LE ${total.toFixed(2)}`;
   }
 }
 

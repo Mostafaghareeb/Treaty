@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const burgerMiddle = document.getElementById("burger-middle");
   const burgerBottom = document.getElementById("burger-bottom");
   let isMenuOpen = false;
-
+  
   mobileMenuButton.addEventListener("click", function () {
     isMenuOpen = !isMenuOpen;
 
