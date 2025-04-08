@@ -1,1 +1,143 @@
-<h1>collections Page is Not exist Now</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Collections - Treaty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'pacifico': ['Pacifico', 'cursive'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-pink-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-poppins">
+                    <a href="index.html#home" class="text-gray-600 hover:text-pink-600">Home</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-pink-600">Shop</a>
+                    <a href="index.html#about" class="text-gray-600 hover:text-pink-600">About</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-pink-600">Contact</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="cart.html" class="text-gray-600 hover:text-pink-600 relative" id="cartButton">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cartCount"
+                            class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Collections Section -->
+    <section class="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl font-bold text-gray-900 mb-12 font-serif text-start">Our Collections</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Classic Collection -->
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1533910534207-90f31029a78e" alt="Classic Collection"
+                            class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Classic Collection","description":"Timeless donut classics that never go out of style. Perfect for traditional donut lovers.","image":"https://images.unsplash.com/photo-1533910534207-90f31029a78e"}'>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Classic
+                        Collection</h3>
+                </div>
+
+                <!-- Premium Collection -->
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac" alt="Premium Collection"
+                            class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Premium Collection","description":"Our most luxurious and decadent donuts, made with premium ingredients and unique flavors.","image":"https://images.unsplash.com/photo-1527515637462-cff94eecc1ac"}'>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Premium
+                        Collection</h3>
+                </div>
+
+                <!-- Seasonal Collection -->
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b" alt="Seasonal Collection"
+                            class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Seasonal Collection","description":"Limited edition donuts that celebrate the flavors of each season.","image":"https://images.unsplash.com/photo-1558326567-98ae2405596b"}'>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Seasonal
+                        Collection</h3>
+                </div>
+
+                <!-- Luxury Velvet Collection -->
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6"
+                            alt="Luxury Velvet Collection"
+                            class="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Luxury Velvet","description":"Our most exclusive collection featuring red velvet donuts with premium toppings and fillings.","image":"https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6"}'>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Luxury Velvet
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Detail Modal -->
+    <div id="collectionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4">
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/2">
+                    <img id="modalCollectionImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 id="modalCollectionName" class="text-2xl font-bold mb-2"></h2>
+                    <p id="modalCollectionDescription" class="text-gray-600 mb-4"></p>
+                    <div class="flex space-x-4">
+                        <button id="collectionAddToCartBtn"
+                            class="flex-1 bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300">
+                            Add to Cart
+                        </button>
+                        <button id="collectionBuyNowBtn"
+                            class="flex-1 bg-gray-800 text-white py-2 rounded-full hover:bg-gray-900 transition duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/collections.js"></script>
+</body>
+
+</html>

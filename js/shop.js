@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function showSuccessMessage(message) {
     const successMessage = document.createElement("div");
     successMessage.className =
-      "fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50";
+      "fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50";
     successMessage.textContent = message;
     document.body.appendChild(successMessage);
 

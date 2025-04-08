@@ -200,7 +200,7 @@
                 </div>
 
                 <!-- Product Card 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group" 
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer product-card group"
                     data-product='{"name":"Berry Blast","price":4.99,"image":"https://images.unsplash.com/photo-1495147466023-ac5c588e2e94","ingredients":["Flour","Sugar","Yeast","Butter","Mixed Berries","Lemon Zest","Milk"]}'>
                     <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94" alt="Berry Blast"
                         class="w-full h-64 object-cover">
@@ -246,36 +246,39 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-gray-900 mb-8 font-serif text-center">Collections</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="relative group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1533910534207-90f31029a78e" alt="Classic Collection"
-                        class="rounded-lg shadow-md w-full h-80 object-cover">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <h3 class="text-white text-2xl font-bold">Classic Collection</h3>
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1533910534207-90f31029a78e" alt="Classic Collection"
+                            class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Classic Collection","description":"Timeless donut classics that never go out of style. Perfect for traditional donut lovers.","image":"https://images.unsplash.com/photo-1533910534207-90f31029a78e","price":29.99}'>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Classic
+                        Collection</h3>
                 </div>
-                <div class="relative group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac" alt="Premium Collection"
-                        class="rounded-lg shadow-md w-full h-80 object-cover">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <h3 class="text-white text-2xl font-bold">Premium Collection</h3>
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac" alt="Premium Collection"
+                            class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Premium Collection","description":"Our most luxurious and decadent donuts, made with premium ingredients and unique flavors.","image":"https://images.unsplash.com/photo-1527515637462-cff94eecc1ac","price":39.99}'>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Premium
+                        Collection</h3>
                 </div>
-                <div class="relative group cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b" alt="Seasonal Collection"
-                        class="rounded-lg shadow-md w-full h-80 object-cover">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <h3 class="text-white text-2xl font-bold">Seasonal Collection</h3>
+                <div class="group cursor-pointer collection-card">
+                    <div class="relative overflow-hidden rounded-lg shadow-md">
+                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b" alt="Seasonal Collection"
+                            class="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-collection='{"name":"Seasonal Collection","description":"Limited edition donuts that celebrate the flavors of each season.","image":"https://images.unsplash.com/photo-1558326567-98ae2405596b","price":34.99}'>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-4 text-center group-hover:underline">Seasonal
+                        Collection</h3>
                 </div>
             </div>
-        </div>
-        <div class="text-center mt-10">
-            <a href="collections.html"
-                class="inline-block bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition duration-300">Show
-                All</a>
+            <div class="text-center mt-10">
+                <a href="collections.html"
+                    class="inline-block bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition duration-300">Show
+                    All</a>
+            </div>
         </div>
     </section>
 
@@ -450,8 +453,35 @@
         </div>
     </div>
 
+    <!-- Collection Detail Modal -->
+    <div id="collectionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4">
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/2">
+                    <img id="modalCollectionImage" src="" alt="" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 id="modalCollectionName" class="text-2xl font-bold mb-2"></h2>
+                    <p id="modalCollectionPrice" class="text-xl text-pink-600 mb-4"></p>
+                    <p id="modalCollectionDescription" class="text-gray-600 mb-4"></p>
+                    <div class="flex space-x-4">
+                        <button id="collectionAddToCartBtn"
+                            class="flex-1 bg-pink-600 text-white py-2 rounded-full hover:bg-pink-700 transition duration-300">
+                            Add to Cart
+                        </button>
+                        <button id="collectionBuyNowBtn"
+                            class="flex-1 bg-gray-800 text-white py-2 rounded-full hover:bg-gray-900 transition duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/collections.js"></script>
     <script src="js/shop.js"></script>
     <script src="js/cart.js"></script>
 
