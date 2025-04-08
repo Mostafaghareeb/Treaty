@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Treaty - Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'pacifico': ['Pacifico', 'cursive'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-pink-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-poppins">
+                    <a href="index.html#home" class="text-gray-600 hover:text-pink-600">Home</a>
+                    <a href="shop.html" class="text-gray-600 hover:text-pink-600">Shop</a>
+                    <a href="index.html#about" class="text-gray-600 hover:text-pink-600">About</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-pink-600">Contact</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="cart.html" class="text-gray-600 hover:text-pink-600 relative" id="cartButton">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cartCount"
+                            class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Details Section -->
+    <section class="pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Image Section -->
+                <div class="md:w-1/2">
+                    <img id="detailImage" src="" alt="" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                </div>
+
+                <!-- Details Section -->
+                <div class="md:w-1/2">
+                    <h1 id="detailName" class="text-3xl font-bold text-gray-900 mb-4"></h1>
+                    <p id="detailPrice" class="text-2xl text-pink-600 mb-6"></p>
+                    <p id="detailDescription" class="text-gray-600 mb-8"></p>
+
+                    <!-- Ingredients List (for products) -->
+                    <div id="ingredientsSection" class="mb-8 hidden">
+                        <h2 class="text-xl font-semibold mb-4">Ingredients</h2>
+                        <ul id="detailIngredients" class="list-disc list-inside text-gray-600"></ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button id="addToCartBtn"
+                            class="flex-1 bg-pink-600 text-white py-3 rounded-full hover:bg-pink-700 transition duration-300">
+                            Add to Cart
+                        </button>
+                        <button id="buyNowBtn"
+                            class="flex-1 bg-gray-800 text-white py-3 rounded-full hover:bg-gray-900 transition duration-300">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/details.js"></script>
+</body>
+
+</html>

@@ -8,63 +8,68 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const addToCartBtn = document.getElementById("addToCartBtn");
   const buyNowBtn = document.getElementById("buyNowBtn");
+  const cartCount = document.getElementById("cartCount");
 
   let currentProduct = null;
 
   // Add click event listeners to all product cards
   document.querySelectorAll(".product-card").forEach((card) => {
     card.addEventListener("click", function (e) {
-      // Don't trigger if clicking on the Add to Cart button
+      // Prevent the click if it's on the Add to Cart button
       if (e.target.closest(".add-to-cart")) {
         return;
       }
 
-      currentProduct = JSON.parse(this.dataset.product);
+      // Get the product data from the card
+      const productData = JSON.parse(this.dataset.product);
 
-      // Update modal content
-      modalProductImage.src = currentProduct.image;
-      modalProductImage.alt = currentProduct.name;
-      modalProductName.textContent = currentProduct.name;
-      modalProductPrice.textContent = `$${currentProduct.price.toFixed(2)}`;
+      // Validate the product data
+      if (
+        !productData ||
+        !productData.name ||
+        !productData.price ||
+        !productData.image
+      ) {
+        console.error("Invalid product data:", productData);
+        return;
+      }
 
-      // Clear and update ingredients list
-      modalProductIngredients.innerHTML = "";
-      currentProduct.ingredients.forEach((ingredient) => {
-        const li = document.createElement("li");
-        li.textContent = ingredient;
-        modalProductIngredients.appendChild(li);
-      });
+      // Create a URL-safe string of the product data
+      const encodedData = encodeURIComponent(JSON.stringify(productData));
 
-      // Show modal
-      modal.classList.remove("hidden");
+      // Redirect to details page with the product data
+      window.location.href = `details.html?data=${encodedData}`;
     });
   });
 
-  // Add to Cart button click handler
-  addToCartBtn.addEventListener("click", function () {
-    if (currentProduct) {
+  // Add to Cart button functionality
+  document.querySelectorAll(".add-to-cart").forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation(); // Prevent card click event
+
+      const productData = {
+        name: button.dataset.product,
+        price: parseFloat(button.dataset.price),
+        image: button.dataset.image,
+      };
+
       // Get existing cart or initialize empty array
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
       // Check if product already exists in cart
-      const existingProductIndex = cart.findIndex(
-        (item) => item.name === currentProduct.name
-      );
-
-      if (existingProductIndex !== -1) {
-        // If product exists, increment quantity
-        cart[existingProductIndex].quantity += 1;
+      const existingItem = cart.find((item) => item.name === productData.name);
+      if (existingItem) {
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
       } else {
-        // If product doesn't exist, add it to cart
         cart.push({
-          name: currentProduct.name,
-          price: currentProduct.price,
-          image: currentProduct.image,
+          name: productData.name,
+          price: productData.price,
+          image: productData.image,
           quantity: 1,
         });
       }
 
-      // Save updated cart to localStorage
+      // Save updated cart
       localStorage.setItem("cart", JSON.stringify(cart));
 
       // Update cart count
@@ -72,10 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Show success message
       showSuccessMessage("Product added to cart!");
-
-      // Close the modal
-      modal.classList.add("hidden");
-    }
+    });
   });
 
   // Buy Now button click handler
@@ -117,12 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to update cart count
   function updateCartCount() {
-    const cartCount = document.getElementById("cartCount");
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
+    const totalItems = cart.reduce(
+      (sum, item) => sum + (item.quantity || 1),
+      0
+    );
     cartCount.textContent = totalItems;
-    cartCount.style.opacity = totalItems > 0 ? "1" : "0";
+    cartCount.classList.remove("opacity-0");
   }
 
   // Function to show success message
