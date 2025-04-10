@@ -1,6 +1,5 @@
 // Create this new file for handling the popup and other functionality
 document.addEventListener("DOMContentLoaded", function () {
-
   // Mobile menu functionality
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -8,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const burgerMiddle = document.getElementById("burger-middle");
   const burgerBottom = document.getElementById("burger-bottom");
   let isMenuOpen = false;
-  
+
   mobileMenuButton.addEventListener("click", function () {
     isMenuOpen = !isMenuOpen;
 
@@ -39,82 +38,213 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileMenuButton.click();
     }
   });
-});
 
-// Search functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('searchInput');
-  const mobileSearchInput = document.getElementById('mobileSearchInput');
-  const searchResults = document.getElementById('searchResults');
-  const mobileSearchResults = document.getElementById('mobileSearchResults');
+  // Search functionality
+  const searchIcon = document.getElementById("searchIcon");
+  const searchContainer = document.getElementById("searchContainer");
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const mobileSearchContainer = document.getElementById(
+    "mobileSearchContainer"
+  );
+  const mobileSearchInput = document.getElementById("mobileSearchInput");
+  const mobileSearchResults = document.getElementById("mobileSearchResults");
 
-  // Sample product data - in a real application, this would come from your backend
-  const products = [
-      { name: 'Classic Glazed', price: 3.99, image: 'https://images.unsplash.com/photo-1556913396-7a3c459ef68e', type: 'product' },
-      { name: 'Chocolate Dream', price: 4.49, image: 'https://images.unsplash.com/photo-1527904324834-3bda86da6771', type: 'product' },
-      { name: 'Berry Blast', price: 4.99, image: 'https://images.unsplash.com/photo-1495147466023-ac5c588e2e94', type: 'product' },
-      { name: 'Caramel Crunch', price: 4.99, image: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd', type: 'product' },
-      { name: 'Classic Collection', price: 29.99, image: 'https://images.unsplash.com/photo-1533910534207-90f31029a78e', type: 'collection' },
-      { name: 'Premium Collection', price: 39.99, image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac', type: 'collection' },
-      { name: 'Seasonal Collection', price: 34.99, image: 'https://images.unsplash.com/photo-1558326567-98ae2405596b', type: 'collection' },
-      { name: 'Luxury Velvet Collection', price: 44.99, image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b', type: 'collection' }
-  ];
+  // Function to toggle search container visibility
+  function toggleSearch(container, input, results) {
+    if (!container || !input || !results) return;
 
-  // Function to perform search
-  function performSearch(query, resultsContainer) {
-      if (!query) {
-          resultsContainer.classList.add('hidden');
-          return;
-      }
+    if (container.classList.contains("-translate-y-full")) {
+      container.classList.remove("-translate-y-full");
+      input.focus();
+    } else {
+      container.classList.add("-translate-y-full");
+      results.classList.add("hidden");
+    }
+  }
 
-      const filteredProducts = products.filter(product => 
-          product.name.toLowerCase().includes(query.toLowerCase())
+  // Function to fetch all products and collections
+  async function fetchAllItems() {
+    const items = [];
+
+    try {
+      // Fetch shop page
+      const shopResponse = await fetch("shop.html");
+      const shopText = await shopResponse.text();
+      const shopDoc = new DOMParser().parseFromString(shopText, "text/html");
+
+      // Get products from shop page
+      const productCards = shopDoc.querySelectorAll(".product-card");
+      productCards.forEach((card) => {
+        try {
+          const data = JSON.parse(card.dataset.product);
+          items.push({
+            name: data.name,
+            price: data.price,
+            image: data.image,
+            type: "product",
+            url: `shop.html?product=${encodeURIComponent(data.name)}`,
+          });
+        } catch (e) {
+          console.error("Error parsing product data:", e);
+        }
+      });
+
+      // Fetch collections page
+      const collectionsResponse = await fetch("collections.html");
+      const collectionsText = await collectionsResponse.text();
+      const collectionsDoc = new DOMParser().parseFromString(
+        collectionsText,
+        "text/html"
       );
 
-      if (filteredProducts.length === 0) {
-          resultsContainer.innerHTML = '<div class="p-4 text-gray-500">No results found</div>';
-      } else {
-          resultsContainer.innerHTML = filteredProducts.map(product => `
-              <a href="details.html?data=${encodeURIComponent(JSON.stringify(product))}" 
-                 class="flex items-center p-2 hover:bg-pink-50 cursor-pointer">
-                  <img src="${product.image}" alt="${product.name}" 
-                       class="w-12 h-12 object-cover rounded-lg">
-                  <div class="ml-3">
-                      <div class="text-gray-900 font-medium">${product.name}</div>
-                      <div class="text-pink-600">LE ${product.price} EGP</div>
-                  </div>
-              </a>
-          `).join('');
-      }
+      // Get collections from collections page
+      const collectionCards =
+        collectionsDoc.querySelectorAll(".collection-card");
+      collectionCards.forEach((card) => {
+        try {
+          const data = JSON.parse(card.querySelector("img").dataset.collection);
+          items.push({
+            name: data.name,
+            price: data.price,
+            image: data.image,
+            type: "collection",
+            url: `collections.html?collection=${encodeURIComponent(data.name)}`,
+          });
+        } catch (e) {
+          console.error("Error parsing collection data:", e);
+        }
+      });
 
-      resultsContainer.classList.remove('hidden');
+      // Also check current page for any products or collections
+      const currentProductCards = document.querySelectorAll(".product-card");
+      currentProductCards.forEach((card) => {
+        try {
+          const data = JSON.parse(card.dataset.product);
+          // Only add if not already in items array
+          if (!items.some((item) => item.name === data.name)) {
+            items.push({
+              name: data.name,
+              price: data.price,
+              image: data.image,
+              type: "product",
+              url: `shop.html?product=${encodeURIComponent(data.name)}`,
+            });
+          }
+        } catch (e) {
+          console.error("Error parsing current product data:", e);
+        }
+      });
+
+      const currentCollectionCards =
+        document.querySelectorAll(".collection-card");
+      currentCollectionCards.forEach((card) => {
+        try {
+          const data = JSON.parse(card.querySelector("img").dataset.collection);
+          // Only add if not already in items array
+          if (!items.some((item) => item.name === data.name)) {
+            items.push({
+              name: data.name,
+              price: data.price,
+              image: data.image,
+              type: "collection",
+              url: `collections.html?collection=${encodeURIComponent(
+                data.name
+              )}`,
+            });
+          }
+        } catch (e) {
+          console.error("Error parsing current collection data:", e);
+        }
+      });
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+
+    return items;
+  }
+
+  // Function to perform search
+  async function performSearch(query, resultsContainer) {
+    if (!query || !resultsContainer) {
+      if (resultsContainer) {
+        resultsContainer.classList.add("hidden");
+      }
+      return;
+    }
+
+    const allItems = await fetchAllItems();
+    const filteredItems = allItems.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    if (filteredItems.length === 0) {
+      resultsContainer.innerHTML =
+        '<div class="p-4 text-gray-500">No results found</div>';
+    } else {
+      // Add max height and overflow to enable scrolling
+      resultsContainer.style.maxHeight = "400px";
+      resultsContainer.style.overflowY = "auto";
+
+      resultsContainer.innerHTML = filteredItems
+        .map(
+          (item) => `
+        <a href="#" class="flex items-center p-4 hover:bg-pink-50 cursor-pointer border-b border-gray-100 last:border-0 transition-colors duration-200" onclick="event.preventDefault(); window.location.href='details.html?data=${encodeURIComponent(
+          JSON.stringify(item)
+        )}'">
+          <img src="${item.image}" alt="${
+            item.name
+          }" class="w-16 h-16 object-cover rounded-lg">
+          <div class="ml-4">
+            <div class="text-gray-900 font-medium">${item.name}</div>
+            <div class="text-pink-600">LE ${item.price} EGP</div>
+            <div class="text-sm text-gray-500">${
+              item.type === "collection" ? "Collection" : "Product"
+            }</div>
+          </div>
+        </a>
+      `
+        )
+        .join("");
+    }
+
+    resultsContainer.classList.remove("hidden");
   }
 
   // Event listeners for desktop search
-  if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-          performSearch(e.target.value, searchResults);
-      });
+  if (searchIcon && searchContainer && searchInput && searchResults) {
+    searchIcon.addEventListener("click", () => {
+      toggleSearch(searchContainer, searchInput, searchResults);
+    });
 
-      // Close search results when clicking outside
-      document.addEventListener('click', (e) => {
-          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-              searchResults.classList.add('hidden');
-          }
-      });
+    searchInput.addEventListener("input", (e) => {
+      performSearch(e.target.value, searchResults);
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        !searchContainer.contains(e.target) &&
+        !searchIcon.contains(e.target)
+      ) {
+        searchContainer.classList.add("-translate-y-full");
+        searchResults.classList.add("hidden");
+      }
+    });
   }
 
   // Event listeners for mobile search
-  if (mobileSearchInput) {
-      mobileSearchInput.addEventListener('input', (e) => {
-          performSearch(e.target.value, mobileSearchResults);
-      });
+  if (mobileSearchContainer && mobileSearchInput && mobileSearchResults) {
+    mobileSearchInput.addEventListener("input", (e) => {
+      performSearch(e.target.value, mobileSearchResults);
+    });
 
-      // Close search results when clicking outside
-      document.addEventListener('click', (e) => {
-          if (!mobileSearchInput.contains(e.target) && !mobileSearchResults.contains(e.target)) {
-              mobileSearchResults.classList.add('hidden');
-          }
-      });
+    // Close search results when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mobileSearchContainer.contains(e.target)) {
+        mobileSearchContainer.classList.add("-translate-y-full");
+        mobileSearchResults.classList.add("hidden");
+      }
+    });
   }
 });

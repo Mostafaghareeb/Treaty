@@ -53,19 +53,6 @@
                     <a href="index.html" class="text-3xl font-bold text-pink-600 font-pacifico">Treaty</a>
                 </div>
 
-                <!-- Search Bar -->
-                <div class="hidden md:flex items-center flex-1 max-w-md mx-4">
-                    <div class="relative w-full">
-                        <input type="text" id="searchInput" placeholder="Search products..."
-                            class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
-                        <div id="searchResults" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg hidden">
-                            <div class="py-2">
-                                <!-- Search results will be populated here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8 font-poppins">
                     <a href="index.html#home" class="text-gray-600 hover:text-pink-600">Home</a>
@@ -74,8 +61,14 @@
                     <a href="index.html#contact" class="text-gray-600 hover:text-pink-600">Contact</a>
                 </div>
 
-                <!-- Cart -->
-                <div class="flex items-center">
+                <!-- Search and Cart -->
+                <div class="flex items-center space-x-4">
+                    <button id="searchIcon" class="text-gray-600 hover:text-pink-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
                     <a href="cart.html" class="text-gray-600 hover:text-pink-600 relative" id="cartButton">
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -84,19 +77,6 @@
                         <span id="cartCount"
                             class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
                     </a>
-                </div>
-            </div>
-
-            <!-- Mobile Search Bar -->
-            <div class="md:hidden px-4 py-2">
-                <div class="relative">
-                    <input type="text" id="mobileSearchInput" placeholder="Search products..."
-                        class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
-                    <div id="mobileSearchResults" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg hidden">
-                        <div class="py-2">
-                            <!-- Mobile search results will be populated here -->
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -115,6 +95,38 @@
             </div>
         </div>
     </nav>
+
+    <!-- Search Container -->
+    <div id="searchContainer"
+        class="fixed top-16 left-0 w-full bg-white shadow-lg transform -translate-y-full transition-transform duration-300 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search products..."
+                    class="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                <div id="searchResults" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg hidden">
+                    <div class="py-2">
+                        <!-- Search results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Search Container -->
+    <div id="mobileSearchContainer"
+        class="fixed top-16 left-0 w-full bg-white shadow-lg transform -translate-y-full transition-transform duration-300 z-40">
+        <div class="px-4 py-4">
+            <div class="relative">
+                <input type="text" id="mobileSearchInput" placeholder="Search products..."
+                    class="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                <div id="mobileSearchResults" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg hidden">
+                    <div class="py-2">
+                        <!-- Mobile search results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Checkout Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
